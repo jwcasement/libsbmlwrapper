@@ -1,0 +1,28 @@
+Package: libsbmlwrapper
+Type: Package
+Title: R functions for working with SBML models
+Version: 1.0
+Date: 2013-06-04
+Author: John Casement
+Maintainer: John Casement <j.w.casement@ncl.ac.uk>
+Description: R functions for working with SBML models
+License: GPL-2 | GPL-3
+Depends:
+    methods,
+    libSBML
+Collate:
+    'nodes.R'
+    'newClasses.R'
+    'select.R'
+    'summary.R'
+    'operationReturnValues.R'
+    'edit.R'
+    'show.R'
+    'setAndGet.R'
+    'barplot.R'
+    'add.R'
+    'delete.R'
+    'read.R'
+    'zzz.R'
+    'showMath.R'
+    'dataDocumentation.R'
