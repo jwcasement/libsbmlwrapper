@@ -7,7 +7,7 @@ libsbmlwrapper can be installed from from github using the devtools package:
 ```r
 install.packages("devtools")
 library(devtools)
-install_github("libsbmlwrapper", "jwcasement", subdir="pkg")
+install_github("libsbmlwrapper", "jwcasement", subdir="package")
 ```
 
 Note Windows users have to first install [Rtools](http://cran.rstudio.com/bin/windows/Rtools/).
