@@ -14,12 +14,12 @@ install_github("libsbmlwrapper", "jwcasement", subdir="package")
 
 Note: Windows users have to first install [Rtools](http://cran.rstudio.com/bin/windows/Rtools/).
 
-libsbmlwrapper requires libSBML, available from [SourceForge](http://sourceforge.net/projects/sbml/files/libsbml/5.5.0/experimental/binaries/r-bindings/windows/libSBML_5.5.0.zip/download) which can be installed in the usual way:
-
 Getting Started
 ---------------
 
-To get started, load the package:
+libsbmlwrapper requires libSBML, available from [SourceForge](http://sourceforge.net/projects/sbml/)
+
+Then to get started, load the package:
 ```r
 library(libsbmlwrapper)
 ```
