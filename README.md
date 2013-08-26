@@ -19,7 +19,7 @@ Getting Started
 
 libsbmlwrapper requires libSBML, available from [SourceForge](http://sourceforge.net/projects/sbml/)
 
-Then to get started, load the package:
+Then load the package:
 ```r
 library(libsbmlwrapper)
 ```
