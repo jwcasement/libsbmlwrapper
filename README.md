@@ -5,7 +5,7 @@ A wrapper for SWIG generated R bindings for libSBML.
 
 The package enables SBML documents to be viewed and edited within R.
 
-libsbmlwrapper can be installed from from github using the devtools package:
+libsbmlwrapper can be installed from from GitHub using the devtools package:
 ```r
 install.packages("devtools")
 library(devtools)
