@@ -40,6 +40,7 @@ setClassUnion("R_ListOf", get_R_ListOf_classes())
 #' @aliases [[,_p_Model,ANY,missing-method
 #' @name select_from_model
 #' @return an R_ListOf object containing SBML component objects
+#'
 setMethod("[[", signature(x = "_p_Model", i = "ANY", j = "missing"),
           function(x, i) {            
             if(is.character(i)) {
@@ -53,20 +54,9 @@ setMethod("[[", signature(x = "_p_Model", i = "ANY", j = "missing"),
 
 
 
-#' A select function for a _p_Component object
-#' 
-#' Selects an attribute from an SBML component object 
-#' 
-#' @title Selection of component attribute
-#' @param x a _p_Component object
-#' @param i a character string indicating the attribute being selected
-#' @docType methods
-#' @rdname select-methods-_p_Component
-#' @exportMethod [[
+#' @rdname select-methods-_p_Model
 #' @aliases [[,_p_Component,ANY-method
 #' @aliases [[,_p_Component,character,missing-method
-#' @name select_from_component
-#' @return a component attribute
 setMethod("[[", signature(x = "_p_Component", i = "character", j = "missing"),
           function(x, i) {            
             compStr = get_model_nodes()[match(class(x), get_component_classes())]
@@ -94,20 +84,9 @@ setMethod("[[", signature(x = "_p_Component", i = "character", j = "missing"),
 
 
 
-#' A select function for an R_ListOf object
-#' 
-#' Selects a subset of an R_ListOf container object 
-#' 
-#' @title Select a subset of a list of SBML component objects
-#' @param x an R_ListOf object
-#' @param i a vector indicating the components in the list to be selected
-#' @docType methods
-#' @rdname select-methods-R_ListOf
-#' @exportMethod [
+#' @rdname select-methods-_p_Model
 #' @aliases [,R_ListOf,ANY-method
 #' @aliases [,R_ListOf,numeric-method
-#' @name select_from_R_ListOf
-#' @return an R_ListOf object containing SBML component objects
 setMethod("[", signature(x = "R_ListOf", i = "numeric"),
           function(x, i, ...) {
             listStr = get_model_num_nodes()[match(class(x), get_R_ListOf_classes())]
@@ -117,19 +96,13 @@ setMethod("[", signature(x = "R_ListOf", i = "numeric"),
 
 
 
-#' get_attribute_from_component
-#' 
-#' Returns a component attribute
-#' 
-#' @title Component attributes
-#' @rdname get_attribute_from_component
-#' @name get_attribute_from_component
-#' @param compStr a string containing the name of an SBML component (singular) 
-#' @param obj the component object from which the attribute value will be taken
-#' @param attrStr a string containing the name of the attribute
-#' @return the value of the attribute named in \code{attrStr} from the component named
-#' in \code{compStr}
-#'
+
+
+# param compStr a string containing the name of an SBML component (singular) 
+# param obj the component object from which the attribute value will be taken
+# param attrStr a string containing the name of the attribute
+# return the value of the attribute named in \code{attrStr} from the component named
+# in \code{compStr}
 get_attribute_from_component = function(compStr, obj, attrStr) {
   
   fun = paste0(compStr, "_get", attrStr)
@@ -138,16 +111,10 @@ get_attribute_from_component = function(compStr, obj, attrStr) {
 
 
 
-#' convert_p_ListOf_to_R_ListOf
-#' 
-#' Converts a _p_ListOf object to an R_ListOf object
-#' 
-#' @title Change object class
-#' @rdname convert_p_ListOf_to_R_ListOf
-#' @name convert_p_ListOf_to_R_ListOf
-#' @param obj the _p_ListOf object to be converted to an R_ListOf object
-#' @return the libSBML _p_ListOf container as an R_ListOf object
-#'
+
+# Converts a _p_ListOf object to an R_ListOf object
+# param obj the _p_ListOf object to be converted to an R_ListOf object
+# return the libSBML _p_ListOf container as an R_ListOf object
 convert_p_ListOf_to_R_ListOf = function(obj) {
   
   pos = match(class(obj), get_p_ListOf_classes())
@@ -171,20 +138,12 @@ convert_p_ListOf_to_R_ListOf = function(obj) {
 } 
 
 
-
-#' get_filtered_list_from_R_ListOf
-#' 
-#' Allows an R_ListOf object to be filtered 
-#' 
-#' @title Filter a list
-#' @rdname get_filtered_list_from_R_ListOf
-#' @name get_filtered_list_from_R_ListOf
-#' @param listStr a string containing the name of an SBML component (plural)
-#' @param RList the R_ListOf object to be filtered
-#' @param index a vector specifying the elements of RList to be retained  
-#' @return a filtered R_ListOf object containing
-#'  only the elements at positions in the vector \code{index}
-#'
+# Allows an R_ListOf object to be filtered 
+# param listStr a string containing the name of an SBML component (plural)
+# param RList the R_ListOf object to be filtered
+# param index a vector specifying the elements of RList to be retained  
+# return a filtered R_ListOf object containing
+#  only the elements at positions in the vector \code{index}
 get_filtered_list_from_R_ListOf = function(listStr, RList, index) {
   
   size = length(RList)
@@ -210,18 +169,11 @@ get_filtered_list_from_R_ListOf = function(listStr, RList, index) {
 
 
 
-#' select_from_UnitDefinition
-#' 
-#' Handles requests for "ListOfUnits" from a _p_UnitDefinition object 
-#' 
-#' @title Select _p_UnitDefinition sub-components
-#' @rdname select_from_UnitDefinition
-#' @name select_from_UnitDefinition
-#' @param x a _p_UnitDefinition object
-#' @param i a string which should be "ListOfUnits" or a UnitDefinition attribute
-#' @return an R_ListOfUnits object containing _p_Unit objects, or a call to
-#' \code{get_attribute_from_component}
-#'
+# Handles requests for "ListOfUnits" from a _p_UnitDefinition object 
+# param x a _p_UnitDefinition object
+# param i a string which should be "ListOfUnits" or a UnitDefinition attribute
+# return an R_ListOfUnits object containing _p_Unit objects, or a call to
+# \code{get_attribute_from_component}
 select_from_UnitDefinition = function(x, i) {
   
   if(i == "ListOfUnits") {    
@@ -250,19 +202,11 @@ select_from_UnitDefinition = function(x, i) {
 }
 
 
-
-#' select_from_Constraint
-#' 
-#' Handles requests for "Message" from a _p_Constraint object 
-#' 
-#' @title Select from _p_Constraint
-#' @rdname select_from_Constraint
-#' @name select_from_Constraint
-#' @param x a _p_Constraint object
-#' @param i a string which should be "Message"
-#' @return the Constraint message string
-#' @note The constraint component has no attributes
-#'
+# Handles requests for "Message" from a _p_Constraint object 
+# param x a _p_Constraint object
+# param i a string which should be "Message"
+# return the Constraint message string
+# note The constraint component has no attributes
 select_from_Constraint = function(x, i) {
   
   if(i == "Message") {
@@ -280,35 +224,26 @@ select_from_Constraint = function(x, i) {
 }
 
 
-
-#' select_from_Reaction
-#' 
-#' Handles requests for sub-components of a _p_Reaction object 
-#' 
-#' @title Select _p_Reaction sub-components
-#' @rdname select_from_Reaction
-#' @name select_from_Reaction
-#' @param x a _p_Reaction object
-#' @param i a string which should be one of those listed in the Note below, or 
-#' a Reaction attribute
-#' @return an object of class R_ListOfSpeciesReferences, R_ListOfModifierSpeciesReferences, 
-#' _p_KineticLaw or a call to \code{get_attribute_from_component}
-#' @note Valid strings are:
-#' 
-#' "ListOfReactants", "ListOfProducts", "ListOfModifiers" 
-#' which will return an R_ListOfSpeciesReferences object containing
-#'  _p_SimpleSpeciesReference objects;
-#'  
-#'  "Product", "Reactant" which will return an R_ListOfSpeciesReferences object 
-#'  containing _p_SpeciesReference objects;
-#'  
-#'  "Modifier" which will return an R_ListOfModifierSpeciesReferences object;
-#'  
-#'  "KineticLaw" which will return a _p_KineticLaw object.
-#'  
-#'  Other strings will be treated as attributes, resulting in a call 
-#'  to \code{get_attribute_from_component}
-#'
+# Handles requests for sub-components of a _p_Reaction object 
+# param x a _p_Reaction object
+# param i a string which should be one of those listed in the Note below, or 
+# a Reaction attribute
+# return an object of class R_ListOfSpeciesReferences, R_ListOfModifierSpeciesReferences, 
+# _p_KineticLaw or a call to \code{get_attribute_from_component}
+# note Valid strings are:
+# "ListOfReactants", "ListOfProducts", "ListOfModifiers" 
+# which will return an R_ListOfSpeciesReferences object containing
+#  _p_SimpleSpeciesReference objects;
+#  
+#  "Product", "Reactant" which will return an R_ListOfSpeciesReferences object 
+#  containing _p_SpeciesReference objects;
+#  
+#  "Modifier" which will return an R_ListOfModifierSpeciesReferences object;
+#  
+#  "KineticLaw" which will return a _p_KineticLaw object.
+#  
+#  Other strings will be treated as attributes, resulting in a call 
+#  to \code{get_attribute_from_component}
 select_from_Reaction = function(x, i) {
   
   fun = paste0("Reaction_get", i)
@@ -371,19 +306,13 @@ select_from_Reaction = function(x, i) {
 
 
 
-#' select_from_KineticLaw
-#' 
-#' Handles requests for "KineticLaw" from a _p_Reaction object 
-#' 
-#' @title Select _p_KineticLaw sub-components
-#' @rdname select_from_KineticLaw
-#' @name select_from_KineticLaw
-#' @param x a _p_KineticLaw object
-#' @param i a string which should be "DerivedUnitDefinition", "ListOfLocalParameters", 
-#' "ListOfParameters", "LocalParameter", "Parameter" or a KineticLaw attribute
-#' @return an object of class R_ListOfLocalParameters, R_ListOfParameters,  
-#' _p_UnitDefinition or a call to \code{get_attribute_from_component}
-#'
+
+# Handles requests for "KineticLaw" from a _p_Reaction object 
+# param x a _p_KineticLaw object
+# param i a string which should be "DerivedUnitDefinition", "ListOfLocalParameters", 
+# "ListOfParameters", "LocalParameter", "Parameter" or a KineticLaw attribute
+# return an object of class R_ListOfLocalParameters, R_ListOfParameters,  
+# _p_UnitDefinition or a call to \code{get_attribute_from_component}
 select_from_KineticLaw = function(x, i) {
   
   fun = paste0("KineticLaw_get", i) 
@@ -429,21 +358,12 @@ select_from_KineticLaw = function(x, i) {
   }
 }
 
-
-
-#' select_from_Event
-#' 
-#' Handles requests for sub-components from a _p_Event object 
-#' 
-#' @title Select _p_Event sub-components
-#' @rdname select_from_Event
-#' @name select_from_Event
-#' @param x a _p_Event object
-#' @param i a string which should be "Trigger", "Delay", "Priority",  
-#' "ListOfEventAssignments", "EventAssignment"or an Event attribute
-#' @return an object of class R_ListOfEventAssignments, _p_Trigger, 
-#' _p_Delay, _p_Priority or a call to \code{get_attribute_from_component}
-#'
+# Handles requests for sub-components from a _p_Event object 
+# param x a _p_Event object
+# param i a string which should be "Trigger", "Delay", "Priority",  
+# "ListOfEventAssignments", "EventAssignment"or an Event attribute
+# return an object of class R_ListOfEventAssignments, _p_Trigger, 
+# _p_Delay, _p_Priority or a call to \code{get_attribute_from_component}
 select_from_Event = function(x, i) {
   
   fun = paste0("Event_get", i)
