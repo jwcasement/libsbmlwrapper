@@ -1,46 +1,13 @@
 #' @name enzymaticreaction
-#' @aliases enzymaticreaction
-#' @title enzymaticreaction
-#' @description An SBML document containing the enzymatic reaction model
-#' converted to a .RData file
-#' @docType data
-NULL
-
-
-
-#' @name ts_case00037
-#' @aliases ts_case00037
-#' @title ts_case00037
-#' @description An SBML document containing model 00037 from the SBML test suite
-#' converted to a .RData file
-#' @docType data
-NULL
-
-
-
-#' @name ts_case00124
-#' @aliases ts_case00124
-#' @title ts_case00124
-#' @description An SBML document containing model 00124 from the SBML test suite
-#' converted to a .RData file
-#' @docType data
-NULL
-
-
-#' @name ts_case00247
-#' @aliases ts_case00247
-#' @title ts_case00247
-#' @description An SBML document containing model 00247 from the SBML test suite
-#' converted to a .RData file
-#' @docType data
-NULL
-
-
-
-#' @name ts_case00345
-#' @aliases ts_case00345
-#' @title ts_case00345
-#' @description An SBML document containing model 00345 from the SBML test suite
-#' converted to a .RData file
+#' @aliases enzymaticreaction ts_case00037 ts_case00124 ts_case00247 ts_case00345
+#' @title Example SBML models
+#' @description Example SBML models. These models are loaded as strings. They can read in using the \code{readSBMLFromString} function
+#' \describe{
+#' \item{\code{enzymaticreaction}}{An enzymatic reaction model}
+#' \item{\code{ts_case00037}}{Model 00037 from the SBML test suite.}
+#' \item{\code{ts_case00124}}{Model 00124 from the SBML test suite.}
+#' \item{\code{ts_case00247}}{Model 00247 from the SBML test suite.}
+#' \item{\code{ts_case00345}}{Model 00345 from the SBML test suite.}
+#' }
 #' @docType data
 NULL
