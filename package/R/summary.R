@@ -1,9 +1,7 @@
-#' A summary function for a _p_SBMLDocument object
+#' Summary methods
 #' 
-#' Returns a list containing high level information about the model
+#' S4 summary methods for _p_SBMLDocument, _p_model, _p_Component and R_List objects. 
 #' 
-#' @title Document summary
-#' @param object an SBML document
 #' @docType methods
 #' @rdname summary-methods-_p_SBMLDocument
 #' @exportMethod summary
@@ -24,18 +22,10 @@ setMethod("summary", "_p_SBMLDocument",
 
 
 
-#' A summary function for a _p_Model object
-#' 
-#' Returns a list containing attributes of the model
-#' 
-#' @title Model summary
-#' @param object an SBML model
-#' @docType methods
-#' @rdname summary-methods-_p_Model
+#' @rdname summary-methods-_p_SBMLDocument
 #' @exportMethod summary
 #' @aliases summary,_p_Model,ANY-method
 #' @aliases summary,_p_Model-method
-#' @name summary_model
 setMethod("summary", "_p_Model", 
           function(object, ...) {
             nodes = get_model_num_nodes()[1:12]
@@ -55,20 +45,10 @@ setMethod("summary", "_p_Model",
           }
 )
 
-
-
-#' A summary function for a _p_Component object
-#' 
-#' Displays values of attributes of an SBML component object
-#' 
-#' @title Component summary
-#' @param object an SBML component
-#' @docType methods
-#' @rdname summary-methods-_p_Component
+#' @rdname summary-methods-_p_SBMLDocument
 #' @exportMethod summary
 #' @aliases summary,_p_Component,ANY-method
 #' @aliases summary,_p_Component-method
-#' @name summary_component
 setMethod("summary", "_p_Component",
           function(object, ...) {
             compStr = get_model_nodes()[match(class(object), get_component_classes())]
@@ -78,19 +58,10 @@ setMethod("summary", "_p_Component",
 )
 
 
-
-#' A summary function for an R_ListOf object
-#' 
-#' Displays values of attributes of all SBML component objects in the R_ListOf object
-#' 
-#' @title R_ListOf summary
-#' @param object an R_ListOf object
-#' @docType methods
-#' @rdname summary-methods-R_ListOf
+#' @rdname summary-methods-_p_SBMLDocument
 #' @exportMethod summary
 #' @aliases summary,R_ListOf,ANY-method
 #' @aliases summary,R_ListOf-method
-#' @name summary_RListOf
 setMethod("summary", "R_ListOf",
           function(object, ...) {
             compStr = get_model_nodes()[match(class(object), get_R_ListOf_classes())]
@@ -101,18 +72,7 @@ setMethod("summary", "R_ListOf",
 
 
 
-#' A summary function for an SBML component object
-#' 
-#' Returns a list of attribute values, with tags corresponding
-#' to component attribute names
-#' 
-#' @title Component summary
-#' @rdname get_component_summary
-#' @name get_component_summary
-#' @param compStr a string containing the name of an SBML component (singular) 
-#' @param obj the component object to be summarised
-#' @param tags the names of the attributes of the component object \code{obj}
-#' @return a list of attribute values
+##This function isn't exported so doesn't need documentation
 get_component_summary = function(compStr, obj, tags) {
   
   l = list()
@@ -126,25 +86,12 @@ get_component_summary = function(compStr, obj, tags) {
 }
 
 
-
-#' A summary function for an R_ListOf object
-#' 
-#' Returns a list of vectors containing attribute values for all elements in the 
-#' R_ListOf object, with tags corresponding to component attribute names
-#' 
-#' @title R_ListOf object summary
-#' @rdname get_R_ListOf_summary
-#' @name get_R_ListOf_summary
-#' @param compStr a string containing the name of an SBML component (singular) 
-#' @param RList the R_ListOf object to be summarised
-#' @param tags the names of the attributes of the component objects in \code{RList}
-#' @return a list of vectors containing attribute values
 get_R_ListOf_summary = function(compStr, RList, tags) {
   
   l = list()
   
   # include a tag showing the number of elements in the _p_ListOf object
-  l[[paste0("Num",compStr)]] = length(RList)
+  l[[paste0("Num", compStr)]] = length(RList)
   
   # get the value of all attributes for all objects in the R list;
   # display with tags corresponding to SBML component attribute names
