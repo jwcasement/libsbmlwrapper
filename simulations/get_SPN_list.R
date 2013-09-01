@@ -6,7 +6,7 @@
 # Initial Amounts for Species are read from the model
 #
 # SPN is returned as a list and is suitable for use in simulations using the
-# function 'gillespie' within the package smfsb
+# function 'gillespie' within the R package smfsb
 #
 # KineticLaw formulae are extracted as character strings to be parsed and
 # evaluated during simulation
