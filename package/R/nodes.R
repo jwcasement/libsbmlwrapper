@@ -55,11 +55,12 @@ get_create_component_nodes = function() paste0("create", get_model_nodes()[1:12]
 
 ## A listing of SBML components for which attribute defaults exist
 ## @param level an SBML model level
+## @param vers an SBML model version
 # @return a listing of all SBML components for which typical defaults can be generated
 # @note Not all components are included in the lists returned by this function
 # since some components do not have typical defaults and some do not have attributes.
-# For SBML Level 3, the list also excludes the 'CompartmentType' and 'SpeciesType'
-# components since these do not exist in SBML Level 3.  
+# Also, the 'CompartmentType' and 'SpeciesType' components only existed in SBML Level 2 Versions 2-4,
+# and the 'InitialAssignment' component was introduced in SBML Level 2 Version 2
 get_default_nodes = function(level, vers) {
   
   has_defaults = c("FunctionDefinition", "UnitDefinition", "Compartment",
