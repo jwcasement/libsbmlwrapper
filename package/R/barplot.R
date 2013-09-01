@@ -35,6 +35,5 @@ setMethod("barplot", signature(height = "_p_Model"),
             
             #restore old margins
             par(mar = old_par)
-            
           }
 )
