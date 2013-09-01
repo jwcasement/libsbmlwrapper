@@ -1,11 +1,7 @@
-#' A function to return an informative string corresponding to 
-#' libSBML operation return value
-#' 
-#' @title libSBML error codes
-#' @rdname get_error_code
-#' @name get_error_code
-#' @param i an integer value returned by a libSBML function   
-#' @return a string corresponding to the libSBML return value \code{i}
+## A function to return an informative string corresponding to 
+## libSBML operation return value
+## @param i an integer value returned by a libSBML function   
+## @return a string corresponding to the libSBML return value \code{i}
 get_error_code = function(i) {
   
   retVals = c(0,-1,-2,-3,-4,-5,-6,-7,-8,-9,-10,-11,-12,-13,
