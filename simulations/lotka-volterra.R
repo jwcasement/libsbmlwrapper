@@ -1,5 +1,5 @@
-# Obtain an example realisation of a stochastic Lotka-Volterra process
-# SBML model from the website accompanying Darren Wilkinson's book "Stochastic Modelling for Systems Biology"
+## Obtain an example realisation of a stochastic Lotka-Volterra process
+## SBML model from the website accompanying Darren Wilkinson's book "Stochastic Modelling for Systems Biology"
 
 library(smfsb)
 set.seed(1)
@@ -15,14 +15,14 @@ mod = SBMLDocument_getModel(doc)
 N = get_SPN_list(mod)
 out = gillespie(N,10000)
 
-# N.B. 'out' is a list with tags 't' and 'x'
-# 't' is a vector of event times
-# 'x' is a matrix with a columns for 'Prey' and 'Predator'
+## N.B. 'out' is a list with tags 't' and 'x'
+## 't' is a vector of event times
+## 'x' is a matrix with a columns for 'Prey' and 'Predator'
 
 
 
-###############################################################
-# example code to produce an attractive plot of the realisation
+################################################################
+## example code to produce an attractive plot of the realisation
 
 # plot prey
 plot(stepfun(out$t, out$x[,1]), main = "Stochastic LV process",
