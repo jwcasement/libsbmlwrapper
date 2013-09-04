@@ -2,18 +2,21 @@ library(smfsb)
 set.seed(1)
 
 # get SBML document as an XML string
-xmlStr = paste(readLines("http://www.staff.ncl.ac.uk/d.j.wilkinson/smfsb/2e/ch06-lv.xml"),
-               collapse = "")
+xmlStr = paste(readLines("http://www.staff.ncl.ac.uk/d.j.wilkinson/smfsb/2e/ch06-lv.xml"), collapse = "")
 
 # get model from document
 doc = readSBMLFromString(xmlStr)
 mod = SBMLDocument_getModel(doc)
 
-# now obtain a realisation
+# now obtain a realisation via gillespie function with 10000 timesteps
 N = get_SPN_list(mod)
 out = gillespie(N,10000)
 
-## example code to produce an attractive plot of the realisation
+
+
+###############################################################
+# example code to produce an attractive plot of the realisation
+
 # plot prey
 plot(stepfun(out$t, out$x[,1]), main = "Stochastic LV process",
      panel.first = grid(),
