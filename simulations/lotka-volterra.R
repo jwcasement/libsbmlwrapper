@@ -17,7 +17,7 @@ out = gillespie(N,10000)
 
 ## N.B. 'out' is a list with tags 't' and 'x'
 ## 't' is a vector of event times
-## 'x' is a matrix with a columns for 'Prey' and 'Predator'
+## 'x' is a matrix with columns for 'Prey' and 'Predator'
 
 
 
