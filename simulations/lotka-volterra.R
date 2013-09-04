@@ -12,6 +12,11 @@ mod = SBMLDocument_getModel(doc)
 N = get_SPN_list(mod)
 out = gillespie(N,10000)
 
+# N.B. 'out' is a list with tags 't' and 'x'
+# 't' is a vector of event times
+# 'x' is a matrix with a columns for 'Prey' and 'Predator'
+# see Darren Wilkinson's book "Stochastic Modelling for Systems Biology" for a full explanation
+
 
 
 ###############################################################
