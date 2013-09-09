@@ -1,4 +1,4 @@
-## Obtain an example realisation of the stochastic Michaelis-Menten Kinetics Model
+## Obtain an example realisation of the stochastic Michaelis-Menten kinetics model
 ## SBML model from the website accompanying Darren Wilkinson's book "Stochastic Modelling for Systems Biology"
 
 library(smfsb)
