@@ -17,7 +17,7 @@ Note: Windows users have to first install [Rtools](http://cran.rstudio.com/bin/w
 Getting Started
 ---------------
 
-libsbmlwrapper requires libSBML, available from [SourceForge.](http://sourceforge.net/projects/sbml/)
+libsbmlwrapper requires libSBML, available from [SourceForge.](http://sourceforge.net/projects/sbml/files/?source=navbar)
 
 Then load the package:
 ```r
